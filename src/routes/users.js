@@ -9,7 +9,8 @@ const { protect } = require("../middleware/auth");
 router.post("/register", validate, userController.insertUsers);
 router.post("/login", userController.login);
 router.post("/verif", userController.otp);
-router.get("/", protect, userController.getDetailUser);
+router.get("/detail-user", protect, userController.getDetailUser);
+router.get("/get-user", userController.getUser);
 router.put(
   "/update-photo",
   protect,

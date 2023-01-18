@@ -36,7 +36,7 @@ const userController = {
       const result = await create(data);
       if (result) {
         // const verifUrl = `http://${Host}:${Port}/users/${req.body.email_user}/${otp}`;
-        const sendEmail = email(data.email_user, otp, data.fullname_user);
+        const sendEmail = email(data.email_user, otp, data.name_user);
         // eslint-disable-next-line eqeqeq
         if (sendEmail == "email not sent!") {
           return response(res, 404, false, null, "register fail");
@@ -154,9 +154,19 @@ const userController = {
     modelUsers
       .getDataUserById(user_id)
       .then((result) =>
-        response(res, 200, true, result.rows, "Get User Success")
+        response(res, 200, true, result.rows, "Get Detail User Success")
       )
-      .catch((err) => response(res, 404, false, err, "Get User Fail"));
+      .catch((err) => response(res, 404, false, err, "Get Detail User Fail"));
+  },
+  getUser: async (req, res) => {
+    modelUsers
+      .getAllUser()
+      .then((result) => {
+        response(res, 200, true, result.rows, "Get User Success");
+      })
+      .catch((err) => {
+        response(res, 404, false, err, "Get User Fail");
+      });
   },
   // forgotPassword: async (req, res) => {
   //   const {

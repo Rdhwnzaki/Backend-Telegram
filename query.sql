@@ -1,4 +1,4 @@
--- Active: 1671205988832@@127.0.0.1@5432@telegram
+-- Active: 1674058128687@@127.0.0.1@5432@postgres
 CREATE TABLE users(
     id_user VARCHAR PRIMARY KEY,
     email_user VARCHAR NOT NULL,

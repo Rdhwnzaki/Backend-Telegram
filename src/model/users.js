@@ -61,6 +61,10 @@ const getDataUserById = (id_user) => {
   return Pool.query(`SELECT * FROM users WHERE id_user = '${id_user}'`);
 };
 
+const getAllUser = () => {
+  return Pool.query(`SELECT * FROM users`);
+};
+
 module.exports = {
   create,
   findEmail,
@@ -68,4 +72,5 @@ module.exports = {
   updatePhotoUser,
   changePW,
   getDataUserById,
+  getAllUser,
 };
