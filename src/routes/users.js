@@ -12,10 +12,10 @@ router.post("/verif", userController.otp);
 router.get("/detail-user", protect, userController.getDetailUser);
 router.get("/get-user", userController.getUser);
 router.put(
-  "/update-photo",
+  "/update-user",
   protect,
   upload.single("photo"),
-  userController.insertPhoto
+  userController.updateUser
 );
 router.put("/change-password/:id_user", protect, userController.changePassword);
 // router.put("/forgot-password", protect, userController.forgotPassword);

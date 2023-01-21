@@ -42,10 +42,10 @@ const verification = (email_user) =>
     )
   );
 
-const updatePhotoUser = (id_user, dataUsers) => {
-  const { photo } = dataUsers;
+const updateProfile = (data) => {
+  const { id_user, username, bio, phone_number, photo } = data;
   return Pool.query(
-    `UPDATE users SET photo='${photo}' WHERE id_user='${id_user}'`
+    `UPDATE users SET username='${username}',bio='${bio}',phone_number=${phone_number},photo='${photo}' WHERE id_user='${id_user}'`
   );
 };
 
@@ -69,7 +69,7 @@ module.exports = {
   create,
   findEmail,
   verification,
-  updatePhotoUser,
+  updateProfile,
   changePW,
   getDataUserById,
   getAllUser,

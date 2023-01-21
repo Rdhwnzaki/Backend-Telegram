@@ -120,7 +120,7 @@ const userController = {
       " wrong otp please check your email"
     );
   },
-  insertPhoto: async (req, res) => {
+  updateUser: async (req, res) => {
     try {
       const id_user = req.payload.id_user;
       console.log("id_user", id_user);
@@ -128,10 +128,18 @@ const userController = {
         folder: "food",
       });
       req.body.photo = image.url;
-      await modelUsers.updatePhotoUser(id_user, req.body);
-      return response(res, 200, true, req.body, "Update Photo Success");
+      const data = {
+        id_user,
+        username: req.body.username,
+        bio: req.body.bio,
+        phone_number: req.body.phone_number,
+        photo: image.url,
+      };
+      await modelUsers.updateProfile(data);
+      return response(res, 200, true, req.body, "Update Profile Success");
     } catch (err) {
-      return response(res, 404, false, err, "Update Photo Fail");
+      console.log(err);
+      return response(res, 404, false, err, "Update Profile Fail");
     }
   },
   changePassword: async (req, res) => {
